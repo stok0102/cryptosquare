@@ -1,7 +1,7 @@
 //Business Logic
 var csquare = function(text) {
   text = text.toLowerCase().replace(/[^a-z]/g, '');
-  var colSize = Math.sqrt(text.length);
+  var colSize = Math.ceil(Math.sqrt(text.length));
   var createArray = function(rows) {
     var arr = [];
 
@@ -22,7 +22,9 @@ var csquare = function(text) {
   var encryptedString = "";
   for (var colIndex = 0; colIndex < colSize; colIndex++) {
     for (var rowIndex = 0; rowIndex < colSize; rowIndex++) {
-      encryptedString += cryptosquare[rowIndex][colIndex];
+      if (cryptosquare[rowIndex][colIndex]) {
+        encryptedString += cryptosquare[rowIndex][colIndex];
+      }
     }
   }
   var outputString = "";
